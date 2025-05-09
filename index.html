@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tarjeta de Aniversario</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Contenedor de la tarjeta, oculto hasta introducir la contraseña correcta -->
+  <div id="wrapper">
+    <div class="card">
+      <div class="heart"></div>
+      <h1>Para mi Amor</h1>
+
+      <!-- Botón para revelar la carta -->
+      <button id="reveal-btn">Leer mi carta ❤️</button>
+
+      <!-- Carta inicialmente oculta -->
+      <div class="letter" id="letter">
+        <p>Buenos días, buenas tardes, buenas noches</p>
+
+        <p>
+          Realmente no sé cuándo te lo envié, pero sé que será el 8 de mayo. 
+          Quiero escribirte esta carta, que posiblemente sea muy larga o no; 
+          no sé cuánto me anime a escribirte o decirte varias cosas, pero 
+          realmente quiero describirte todo lo que siento. Si no te lo 
+          expreso, sé que se quedará ahí, aunque ya me has aclarado muchas 
+          cosas y tú misma dijiste “hasta aquí”… pero deseo mostrarte que 
+          me importas muchísimo. Tal vez solo lo muestro con mensajes, no 
+          con hechos. Sé que he hecho estupideces y que hay muchas cosas 
+          que cambiar; estos días no he podido dormir bien, he tenido 
+          insomnio y otras cosas.
+        </p>
+
+        <p>
+          Realmente no sé si leerás todo lo que escriba. Sé que no has 
+          querido hablar conmigo por mensajes ni de otra forma, pero deseo 
+          saber si estás bien: cómo te ha ido en el trabajo, cómo estás tú, 
+          si estás enferma, cómo va tu día… Desde que pasó eso, empecé a 
+          sentirme mal. Si no me dicen qué hacer, no lo hago: es un 
+          problema mío. Hay lugares que he visitado y quería disfrutarlos 
+          contigo, pero las palabras no bastan sin acciones, y ahí fallé.
+        </p>
+
+        <p>
+          He estado pensando en todo, he recordado cada detalle y cada 
+          noche me pregunto cómo estarás, qué estarás haciendo, cómo te 
+          habrá ido. Tu último audio me hizo creer que hay una oportunidad 
+          más (o quizá lo malinterpreté). Fue bonito escucharte con cariño. 
+          Aunque no estabas aquí, tus palabras me dieron esa fuerza extra 
+          que necesitaba. Perdona si no fui quien te motivara o protegiera; 
+          sé que derrumbé esa parte en ti.
+        </p>
+
+        <p>
+          Si lees esto y de pronto cambio de tema, es porque mi mente 
+          discute con mi corazón. No quiero que termine así nuestra 
+          relación. Te he dicho que quiero intentarlo y haré todo lo 
+          necesario, aunque sé que aún no lo he demostrado por miedo a 
+          hacerlo bien. Quiero reconstruir lo que rompí o, mejor aún, 
+          crear algo nuevo que nunca se derrumbe. Te amo demasiado.
+        </p>
+
+        <p>
+          He querido llamarte para saber de ti, pero temo molestarte. 
+          Cuando pienso en ti, siento paz; deseo reconstruir esa parte en 
+          ti y que nunca lo dudes. Te amo como nunca y perdona si no te lo 
+          he mostrado.
+        </p>
+
+        <p>
+          Tal vez pienses que esto es estúpido o no le des importancia, 
+          pero comprendo que tengas derecho a sentirlo así por lo que 
+          hice. Extraño abrazarte, tu perfume y tu calor. Solo era texto 
+          o audios, pero quiero arreglarlo.
+        </p>
+
+        <p>
+          Pronto será nuestro aniversario (o ex-aniversario). No sé si te 
+          enfadará lo que haré en instragram, la verdad lo habia planeado 
+          desde hace tiempo. Quizá te visite ese día… no sé cómo me recibirás. 
+          Si no llego, perdóname por no animarme.
+        </p>
+
+        <p>
+          Hay tantas cosas que quisiera decirte: preguntarte “¿cómo 
+          estás?”, “¿ya comiste?”, “¿estás abrigada?”… pero quizá te 
+          moleste ver una notificación mía o saber que existo. Aun así, 
+          pierdo mi poca dignidad para intentarlo. Quiero apoyarte y 
+          mostrarte la chica valiente y maravillosa que eres.
+        </p>
+
+        <p>
+          Trataré de luchar conmigo mismo para hacer esto bien. ¡Feliz 
+          aniversario, pequeña! Gracias por todos los momentos, buenos y 
+          malos. Quiero invitarte a un almuerzo o cena y ver cómo podemos 
+          empezar de nuevo.
+        </p>
+
+        <p>
+          Te amodoro, mi niña hermosa, mi calabacita hermosa, mi pequeña 
+          preciosa, mi nena bella, y se que paso a paso trataré de 
+          conquistarte. No me importará humillarme si eso demuestra cuánto 
+          te amo.
+        </p>
+
+        <p>
+          Con cariño,<br>
+          Josué Vásquez
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mensaje de error si la contraseña es incorrecta -->
+  <div id="error">
+    <div class="broken-heart">💔</div>
+    <h1>Contraseña incorrecta</h1>
+    <button id="retry-btn">Intentar de nuevo</button>
+  </div>
+
+  <script>
+    // Función que pide la contraseña y muestra el wrapper o el error
+    function askPassword() {
+      const clave   = prompt("Ingresa la clave para ver tu sorpresa 💌");
+      const wrapper = document.getElementById("wrapper");
+      const error   = document.getElementById("error");
+
+      if (clave === "8DeMayo") {
+        wrapper.style.display = "block";
+        error.style.display   = "none";
+      } else {
+        wrapper.style.display = "none";
+        error.style.display   = "flex";
+      }
+    }
+
+    // Al cargar la página
+    askPassword();
+
+    // Botón de reintentar
+    document.getElementById("retry-btn")
+      .addEventListener("click", askPassword);
+
+    // Botón para revelar carta
+    document.getElementById("reveal-btn")
+      .addEventListener("click", function () {
+        document.getElementById("letter")
+          .classList.add("visible");
+        this.style.display = "none";
+      });
+  </script>
+</body>
+</html>

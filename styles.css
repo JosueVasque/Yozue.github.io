@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Ambos contenedores ocultos por defecto */
+#wrapper,
+#error {
+  display: none;
+}
+
+body {
+  background: linear-gradient(135deg, #ffe6e6, #fff5f5);
+  font-family: 'Great Vibes', cursive;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  flex-direction: column;
+  text-align: center;
+}
+
+.card {
+  position: relative;
+  background: #fff;
+  padding: 40px 30px 60px;
+  max-width: 600px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* Corazón perfectamente formado */
+.heart {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-45deg);
+  width: 120px;
+  height: 120px;
+  background: #e74c3c;
+}
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: #e74c3c;
+  border-radius: 50%;
+}
+.heart::before {
+  top: -60px;
+  left: 0;
+}
+.heart::after {
+  top: 0;
+  left: 60px;
+}
+
+h1 {
+  margin-top: 70px;
+  font-size: 2.5rem;
+  color: #c0392b;
+}
+
+/* Carta */
+.letter {
+  margin-top: 20px;
+  font-family: serif;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+  text-align: left;
+}
+.letter p {
+  margin-bottom: 1em;
+}
+
+/* Botones */
+#reveal-btn,
+#retry-btn {
+  margin: 20px auto;
+  display: block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+#reveal-btn:hover,
+#retry-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Fade-in para la carta */
+#letter {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+#letter.visible {
+  display: block;
+  opacity: 1;
+}
+
+/* Mensaje de error */
+#error {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.broken-heart {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+#error h1 {
+  color: #c00;
+  margin-bottom: 20px;
+}
